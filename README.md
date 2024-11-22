@@ -49,10 +49,10 @@ uvx --from howto-ai howto
 # Usage
 
 ```shell
-λ: howto --help           
-                                                                                  
- Usage: howto [OPTIONS] [QUERY]...                                                
-                                                                                  
+λ: howto --help
+
+ Usage: howto [OPTIONS] [QUERY]...
+
 ╭─ Arguments ────────────────────────────────────────────────────────────────────╮
 │   query      [QUERY]...  This is what you'd like to ask as a question. Empty   │
 │                          queries will open a prompt.                           │
@@ -66,8 +66,8 @@ uvx --from howto-ai howto
 │ --config-path           --no-config-path      Print the default config path    │
 │                                               and exit.                        │
 │                                               [default: no-config-path]        │
-│ --show-config           --no-show-config      Print the config and exit.       │
-│                                               [default: no-show-config]        │
+│ --config-show           --no-config-show      Print the config and exit.       │
+│                                               [default: no-config-show]        │
 │ --install-completion                          Install completion for the       │
 │                                               current shell.                   │
 │ --show-completion                             Show completion for the current  │
@@ -76,7 +76,6 @@ uvx --from howto-ai howto
 │ --help                                        Show this message and exit.      │
 ╰────────────────────────────────────────────────────────────────────────────────╯
 ```
-
 
 # Backends
 
@@ -94,16 +93,20 @@ Edit this in your favourite text editor. If this is difficult, please open an Is
 
 ### Open AI
 
-Set the model you want by updating the config file
+Set the model you want by using the `--set-model` flag or updating the config file
+
+```shell
+howto --set-model 'gpt-4o'
+```
+
+or
 
 ```toml
-model = "gpt-4o"
+model = "gpt-4o-mini"
 # or
 model = "gpt-4"
-# or
-model = "gpt-3.5-turbo"
 # ...
-``` 
+```
 
 then export your `OPENAI_API_KEY` for that session (in your .envrc or .bashrc or wherever)
 
@@ -115,16 +118,20 @@ and you should be good to go
 
 ### Hugging Face
 
-Set the model you want by updating the config file
+Set the model you want by using the `--set-model` flag or updating the config file
+
+```shell
+howto --set-model 'huggingface/Qwen/Qwen2.5-Coder-32B-Instruct' # https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct
+```
+
+or
 
 ```toml
 model = "huggingface/<hugging_face_model>"
 # for example
 model = "huggingface/facebook/blenderbot-400M-distill" # https://huggingface.co/facebook/blenderbot-400M-distill
-# or
-model = "Qwen/Qwen2.5-Coder-32B-Instruct" # https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct
 # ...
-``` 
+```
 
 then export your `HUGGINGFACE_API_KEY` for that session (in your .envrc or .bashrc or wherever)
 
@@ -136,16 +143,20 @@ and you should be good to go
 
 ### Anthropic
 
-Set the model you want by updating the config file
+Set the model you want by using the `--set-model` flag or updating the config file
+
+```shell
+howto --set-model 'claude-3-opus-latest' # https://docs.anthropic.com/en/docs/about-claude/models
+```
+
+or
 
 ```toml
-model = "claude-3-5-sonnet-20241022" # https://docs.anthropic.com/en/docs/about-claude/models
-# or 
-model = "claude-3-5-haiku-latest"
+model = "claude-3-5-sonnet-20241022"
 # or
-model = "claude-3-opus-latest"
+model = "claude-3-5-haiku-latest"
 # ...
-``` 
+```
 
 then export your `ANTHROPIC_API_KEY` for that session (in your .envrc or .bashrc or wherever)
 

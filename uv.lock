@@ -278,16 +278,16 @@ wheels = [
 
 [[package]]
 name = "howto-ai"
-version = "0.1.dev1+gd18acf1.d20241122"
+version = "0.1.1.dev2+ge9f9b6b.d20241122"
 source = { editable = "." }
 dependencies = [
     { name = "litellm" },
     { name = "pydantic-settings" },
-    { name = "toml" },
+    { name = "tomli-w" },
     { name = "typer" },
 ]
 
-[package.dev-dependencies]
+[package.optional-dependencies]
 dev = [
     { name = "build" },
     { name = "pre-commit" },
@@ -298,19 +298,15 @@ dev = [
 
 [package.metadata]
 requires-dist = [
+    { name = "build", marker = "extra == 'dev'", specifier = ">=1.2.2.post1" },
     { name = "litellm", specifier = ">=1.52.12" },
+    { name = "pre-commit", marker = "extra == 'dev'", specifier = ">=4.0.1" },
     { name = "pydantic-settings", specifier = ">=2.6.1" },
-    { name = "toml", specifier = ">=0.10.2" },
+    { name = "pytest", marker = "extra == 'dev'", specifier = ">=8.3.3" },
+    { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.7.4" },
+    { name = "setuptools-scm", marker = "extra == 'dev'", specifier = ">=8.1.0" },
+    { name = "tomli-w", specifier = ">=1.1.0" },
     { name = "typer", specifier = ">=0.13.1" },
-]
-
-[package.metadata.requires-dev]
-dev = [
-    { name = "build", specifier = ">=1.2.2.post1" },
-    { name = "pre-commit", specifier = ">=4.0.1" },
-    { name = "pytest", specifier = ">=8.3.3" },
-    { name = "ruff", specifier = ">=0.7.4" },
-    { name = "setuptools-scm", specifier = ">=8.1.0" },
 ]
 
 [[package]]
@@ -1074,12 +1070,12 @@ wheels = [
 ]
 
 [[package]]
-name = "toml"
-version = "0.10.2"
+name = "tomli-w"
+version = "1.1.0"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/be/ba/1f744cdc819428fc6b5084ec34d9b30660f6f9daaf70eead706e3203ec3c/toml-0.10.2.tar.gz", hash = "sha256:b3bda1d108d5dd99f4a20d24d9c348e91c4db7ab1b749200bded2f839ccbe68f", size = 22253 }
+sdist = { url = "https://files.pythonhosted.org/packages/d4/19/b65f1a088ee23e37cdea415b357843eca8b1422a7b11a9eee6e35d4ec273/tomli_w-1.1.0.tar.gz", hash = "sha256:49e847a3a304d516a169a601184932ef0f6b61623fe680f836a2aa7128ed0d33", size = 6929 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/44/6f/7120676b6d73228c96e17f1f794d8ab046fc910d781c8d151120c3f1569e/toml-0.10.2-py2.py3-none-any.whl", hash = "sha256:806143ae5bfb6a3c6e736a764057db0e6a0e05e338b5630894a5f779cabb4f9b", size = 16588 },
+    { url = "https://files.pythonhosted.org/packages/c4/ac/ce90573ba446a9bbe65838ded066a805234d159b4446ae9f8ec5bbd36cbd/tomli_w-1.1.0-py3-none-any.whl", hash = "sha256:1403179c78193e3184bfaade390ddbd071cba48a32a2e62ba11aae47490c63f7", size = 6440 },
 ]
 
 [[package]]
