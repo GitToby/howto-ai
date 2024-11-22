@@ -1,0 +1,31 @@
+[project]
+name = "howto-ai"
+dynamic = ["version"]
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "litellm>=1.52.12",
+    "pydantic-settings>=2.6.1",
+    "toml>=0.10.2",
+    "typer>=0.13.1",
+]
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.0.1",
+    "pytest>=8.3.3",
+    "ruff>=0.7.4",
+    "setuptools-scm>=8.1.0",
+]
+
+[project.scripts]
+howto = "howto.main:app"
+
+
+[tool.setuptools_scm]
+version_file = "src/howto/_version.py"
+
+[build-system]
+requires = ["setuptools>=64", "setuptools_scm>=8"]
+build-backend = "setuptools.build_meta"
