@@ -42,6 +42,9 @@ def main(
             bool, typer.Option(help="Print the config and exit.")
         ] = False,
 ):
+    """
+    Get help for any query in your terminal with documented tool use.
+    """
     config = Config()
 
     # Writes default config path if its not there already
