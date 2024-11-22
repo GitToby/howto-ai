@@ -15,25 +15,17 @@ howto print my system information?
 And you'll be told!
 
 ```
-╭──────────────────────────────────────────────────────────────────────────────────────────────╮
-│ You can use the system_profiler command on macOS to print detailed system information.       │
-│ For example:                                                                                 │
-│                                                                                              │
-│                                                                                              │
-│  system_profiler SPHardwareDataType                                                          │
-│                                                                                              │
-│                                                                                              │
-│ This command will display detailed information about your Mac's hardware, including the      │
-│ model name,processor, number of processors, total number of cores, memory, and other         │
-│ hardware specifics. For more comprehensive system information, you can run:                  │
-│                                                                                              │
-│                                                                                              │
-│  system_profiler                                                                             │
-│                                                                                              │
-│                                                                                              │
-│ This command provides an extensive report on hardware, software, and network configurations. │
-│ It may take a few moments to complete due to the amount of information it gathers.           │
-╰──────────────────────────────────────────────────────────────────────────────────────────────╯
+╭────────────────────────────────────────────────────────────────────────────────╮
+│ You can use the `uname -o` command to display your operating system.           │
+│                                                                                │
+│                                                                                │
+│  uname -o                                                                      │
+│                                                                                │
+│                                                                                │
+│ This command works with various Unix-like systems, including Linux and macOS.  │
+│ If you're running a 64-bit kernel on an Apple M1 or ARM-based hardware, it     │
+│ will return "Darwin" (the underlying OS name for macOS).                       │
+╰────────────────────────────────────────────────────────────────────────────────╯
 ```
 
 # Installing
@@ -57,27 +49,32 @@ uvx --from howto-ai howto
 # Usage
 
 ```shell
-λ: howto --help
-                                                                                                
- Usage: howto [OPTIONS] [QUERY]...                                                              
-                                                                                                
-╭─ Arguments ──────────────────────────────────────────────────────────────────────────────────╮
-│   query      [QUERY]...  This is what you'd like to ask as a question. Empty queries will    │
-│                          open a prompt.                                                      │
-│                          [default: None]                                                     │
-╰──────────────────────────────────────────────────────────────────────────────────────────────╯
-╭─ Options ────────────────────────────────────────────────────────────────────────────────────╮
-│ --debug                 --no-debug            Make no requests to llms [default: no-debug]   │
-│ --dry-run               --no-dry-run          Make no requests to llms [default: no-dry-run] │
-│ --config-path           --no-config-path      Print the default config path and exit.        │
-│                                               [default: no-config-path]                      │
-│ --show-config           --no-show-config      Print the config and exit.                     │
-│                                               [default: no-show-config]                      │
-│ --install-completion                          Install completion for the current shell.      │
-│ --show-completion                             Show completion for the current shell, to copy │
-│                                               it or customize the installation.              │
-│ --help                                        Show this message and exit.                    │
-╰──────────────────────────────────────────────────────────────────────────────────────────────╯
+λ: howto --help           
+                                                                                  
+ Usage: howto [OPTIONS] [QUERY]...                                                
+                                                                                  
+╭─ Arguments ────────────────────────────────────────────────────────────────────╮
+│   query      [QUERY]...  This is what you'd like to ask as a question. Empty   │
+│                          queries will open a prompt.                           │
+│                          [default: None]                                       │
+╰────────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ──────────────────────────────────────────────────────────────────────╮
+│ --debug                 --no-debug            Make no requests to llms         │
+│                                               [default: no-debug]              │
+│ --dry-run               --no-dry-run          Make no requests to llms         │
+│                                               [default: no-dry-run]            │
+│ --config-path           --no-config-path      Print the default config path    │
+│                                               and exit.                        │
+│                                               [default: no-config-path]        │
+│ --show-config           --no-show-config      Print the config and exit.       │
+│                                               [default: no-show-config]        │
+│ --install-completion                          Install completion for the       │
+│                                               current shell.                   │
+│ --show-completion                             Show completion for the current  │
+│                                               shell, to copy it or customize   │
+│                                               the installation.                │
+│ --help                                        Show this message and exit.      │
+╰────────────────────────────────────────────────────────────────────────────────╯
 ```
 
 

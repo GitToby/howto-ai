@@ -1,3 +1,4 @@
+import platform
 from pathlib import Path
 from typing import Annotated
 
@@ -27,20 +28,20 @@ class Config(BaseSettings):
 
 @app.command()
 def main(
-        query: Annotated[
-            list[str] | None,
-            typer.Argument(
-                help="This is what you'd like to ask as a question. Empty queries will open a prompt."
-            ),
-        ] = None,
-        debug: Annotated[bool, typer.Option(help="Make no requests to llms")] = False,
-        dry_run: Annotated[bool, typer.Option(help="Make no requests to llms")] = False,
-        config_path: Annotated[
-            bool, typer.Option(help="Print the default config path and exit.")
-        ] = False,
-        show_config: Annotated[
-            bool, typer.Option(help="Print the config and exit.")
-        ] = False,
+    query: Annotated[
+        list[str] | None,
+        typer.Argument(
+            help="This is what you'd like to ask as a question. Empty queries will open a prompt."
+        ),
+    ] = None,
+    debug: Annotated[bool, typer.Option(help="Make no requests to llms")] = False,
+    dry_run: Annotated[bool, typer.Option(help="Make no requests to llms")] = False,
+    config_path: Annotated[
+        bool, typer.Option(help="Print the default config path and exit.")
+    ] = False,
+    show_config: Annotated[
+        bool, typer.Option(help="Print the config and exit.")
+    ] = False,
 ):
     """
     Get help for any query in your terminal with documented tool use.
@@ -87,14 +88,20 @@ def main(
             print(system_messages)
 
         with Progress(
-                SpinnerColumn(),
-                TextColumn("[progress.description]{task.description}"),
-                transient=True,
+            SpinnerColumn(),
+            TextColumn("[progress.description]{task.description}"),
+            transient=True,
         ) as progress:
             progress.add_task(description="Thinking...", total=None)
             response = completion(
                 model=config.model,
-                messages=[*system_messages, {"content": f"Question:\n 'how to {_query}' \n\n Answer:", "role": "user"}],
+                messages=[
+                    *system_messages,
+                    {
+                        "content": f"Question:\n 'how to {_query}' - user is on {platform.platform()}\n\n Answer:",
+                        "role": "user",
+                    },
+                ],
             )
 
         _response = response.choices[0].message.content
