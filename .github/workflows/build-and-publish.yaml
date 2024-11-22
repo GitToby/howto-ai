@@ -20,7 +20,9 @@ jobs:
           python-version-file: "pyproject.toml"
 
       - run: pip install '.[dev]'
-      - run: python -m build
+      - run: python -m build --version
+      - run: python -m build .
 
-      - name: Publish package distributions to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
+      - uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          skip-existing: true
