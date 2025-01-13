@@ -25,6 +25,7 @@ app = typer.Typer(name=APP_NAME)
 
 class Config(BaseSettings):
     model: str = "ollama_chat/llama3.2"
+    include_system_info: bool = False
 
     model_config = SettingsConfigDict(
         env_prefix="HOWTO_", toml_file=[DEFAULT_CONFIG_PATH]
@@ -115,7 +116,8 @@ def main(
         _query += "?"
 
     if verbose > 0 or dry_run:
-        print(f'calling {config.model}: "{_query}"')
+        print(f'config {config}')
+        print(f'query "{_query}"')
 
     # Break before actually calling the LLM in question
     if dry_run:
@@ -131,12 +133,18 @@ def main(
             transient=True,
         ) as progress:
             progress.add_task(description="Thinking...", total=None)
+
+            content = f"Question:\n 'how to {_query}'"
+
+            if config.include_system_info:
+                    content +=  f" - user is on {platform.platform()}"
+
             response = completion(
                 model=config.model,
                 messages=[
                     *system_messages,
                     {
-                        "content": f"Question:\n 'how to {_query}' - user is on {platform.platform()}\n\n Answer:",
+                        "content": f"{content}'\n\n Answer:",
                         "role": "user",
                     },
                 ],
