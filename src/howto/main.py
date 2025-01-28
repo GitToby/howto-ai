@@ -86,6 +86,9 @@ def main(
     """
     Get help for any query in your terminal with documented tool use.
     """
+    if verbose:
+        print(f"Running in {verbose=}")
+
     config = Config()
 
     # Setting the model should set and persist but not run through

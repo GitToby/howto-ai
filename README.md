@@ -9,7 +9,7 @@
 Dont know how to do something in your terminal?
 
 ```
-howto print my system information?
+howto print my system information
 ```
 
 And you'll be told!
@@ -83,7 +83,7 @@ uvx --from howto-ai howto
 expected to be running locally (make sure you read their docs). If it is, your `howto` commands will work.
 
 `howto` can also be used against popular local, private and public AI APIs including ChatGPT, Gemini and others. To
-configure this, you need to edit the config file. Locating the config file can be done with:
+configure this, you need to edit the config file or use the commands below. Locating the config file can be done with:
 
 ```shell
 howto --config-path
@@ -91,48 +91,52 @@ howto --config-path
 
 Edit this in your favourite text editor. If this is difficult, please open an Issue and we can help.
 
-### Open AI
+## General Directions
 
-Set the model you want by using the `--set-model` flag or updating the config file
+Set the model you want by using the `--set-model` flag or updating the config file at `.config/howto-ai/config.toml`. We use [liteLLM](https://docs.litellm.ai/docs/providers) for the proxy service, so any supported model will work.
 
 ```shell
-howto --set-model 'gpt-4o'
+howto --set-model '<provider>/<model>'
 ```
-
 or
-
 ```toml
-model = "gpt-4o-mini"
-# or
-model = "gpt-4"
+model = "<provider>/<model>"
+# for example
+model = "huggingface/facebook/blenderbot-400M-distill" # https://huggingface.co/facebook/blenderbot-400M-distill
 # ...
 ```
 
+Here are some examples of popular providers and their models:
+### Ollama
+
+
+```shell
+howto --set-model='ollama/deepseek-r1:32b'
+howto --set-model='ollama/deepseek-r1:32b'
+howto --set-model='ollama/deepseek-r1:32b'
+howto --set-model='ollama/deepseek-r1:32b'
+```
+
+### Open AI
+
+```shell
+howto --set-model 'gpt-4o-mini' # https://platform.openai.com/docs/models
+howto --set-model 'gpt-4o'
+...
+```
 then export your `OPENAI_API_KEY` for that session (in your .envrc or .bashrc or wherever)
 
 ```shell
 export OPENAI_API_KEY="<your key here>" # https://platform.openai.com/api-keys
 ```
 
-and you should be good to go
-
 ### Hugging Face
-
-Set the model you want by using the `--set-model` flag or updating the config file
 
 ```shell
 howto --set-model 'huggingface/Qwen/Qwen2.5-Coder-32B-Instruct' # https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct
+howto --set-model 'huggingface/facebook/blenderbot-400M-distill'  # https://huggingface.co/facebook/blenderbot-400M-distill
+...
 ```
-
-or
-
-```toml
-model = "huggingface/<hugging_face_model>"
-# for example
-model = "huggingface/facebook/blenderbot-400M-distill" # https://huggingface.co/facebook/blenderbot-400M-distill
-# ...
-```
-
 then export your `HUGGINGFACE_API_KEY` for that session (in your .envrc or .bashrc or wherever)
 
 ```shell
@@ -143,25 +147,17 @@ and you should be good to go
 
 ### Anthropic
 
-Set the model you want by using the `--set-model` flag or updating the config file
-
 ```shell
 howto --set-model 'claude-3-opus-latest' # https://docs.anthropic.com/en/docs/about-claude/models
-```
-
-or
-
-```toml
-model = "claude-3-5-sonnet-20241022"
-# or
-model = "claude-3-5-haiku-latest"
-# ...
+howto --set-model 'claude-3-5-sonnet-latest'
+howto --set-model 'claude-3-5-haiku-latest'
+...
 ```
 
 then export your `ANTHROPIC_API_KEY` for that session (in your .envrc or .bashrc or wherever)
 
 ```shell
-export ANTHROPIC_API_KEY="<your key here>" # https://huggingface.co/docs/hub/security-tokens
+export ANTHROPIC_API_KEY="<your key here>" 
 ```
 
 and you should be good to go
