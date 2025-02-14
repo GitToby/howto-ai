@@ -44,7 +44,7 @@ pipx install howto-ai
 uvx --from howto-ai howto
 ```
 
-> **Note:** pre 1.0.0 release are assumed to be unstable and might break or do unexpected things, use wisely
+homebred and other packages coming soon 📦 
 
 # Usage
 
@@ -93,7 +93,7 @@ Edit this in your favourite text editor. If this is difficult, please open an Is
 
 ## General Directions
 
-Set the model you want by using the `--set-model` flag or updating the config file at `.config/howto-ai/config.toml`. We use [liteLLM](https://docs.litellm.ai/docs/providers) for the proxy service, so any supported model will work.
+Set the model you want by using the `--set-model` flag or updating the config file at `.config/howto-ai/config.toml`. We use [liteLLM](https://docs.litellm.ai/docs/providers) for their adapter service, so any supported model will work.
 
 ```shell
 howto --set-model '<provider>/<model>'
@@ -112,9 +112,7 @@ Here are some examples of popular providers and their models:
 
 ```shell
 howto --set-model='ollama/deepseek-r1:32b'
-howto --set-model='ollama/deepseek-r1:32b'
-howto --set-model='ollama/deepseek-r1:32b'
-howto --set-model='ollama/deepseek-r1:32b'
+howto --set-model='ollama/llamla3:8b'
 ```
 
 ### Open AI
