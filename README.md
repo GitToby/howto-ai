@@ -44,7 +44,7 @@ pipx install howto-ai
 uvx --from howto-ai howto
 ```
 
-homebred and other packages coming soon 📦 
+📦 homebrew and other packages coming soon 📦 
 
 # Usage
 
